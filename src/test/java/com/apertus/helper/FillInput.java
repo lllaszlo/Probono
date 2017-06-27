@@ -207,25 +207,22 @@ public class FillInput {
         //nem = nem
     }
 
-    public static void ELearning(boolean x) {
-        if (x) {
-            driver.findElement(By.xpath("//label[@id='btnSecondaryElearning']")).click();
-        }
+    public static void ELearning() {
+        driver.findElement(By.xpath("//label[@id='btnSecondaryElearning']")).click();
     }
 
-    public static void jelenleti(boolean x) {
-        if (x) {
-            driver.findElement(By.xpath("//label[@id='btnSecondaryJelenleti']")).click();
-        }
+    public static void jelenleti() {
+        driver.findElement(By.xpath("//label[@id='btnSecondaryJelenleti']")).click();
     }
 
-    public static void blended(boolean x) {
-        if (x) {
-            driver.findElement(By.xpath("//label[@id='btnSecondaryBlended']")).click();
-        }
+    public static void blended() {
+        driver.findElement(By.xpath("//label[@id='btnSecondaryBlended']")).click();
     }
 
     public static void telepules(String x) {
+        sleep(1000);
+        Integer tabindex = Integer.parseInt(driver.findElement(By.xpath("//div[10]/div/span/span/span")).getAttribute("tabindex"));
+        if (tabindex == 0) {
         driver.findElement(By.xpath("//span[@id='select2-filter_telepulesId-container']")).click();
         WebElement telepulesInput = driver.findElement(By.xpath("//input[@autocapitalize='off']"));
         telepulesInput.click();
@@ -235,6 +232,7 @@ public class FillInput {
         //buda = budapest
         //deb = debrecen
         //szeg = szeged
+        }
     }
 
     public static void hatalyossagKezdete(String x) {
@@ -245,9 +243,7 @@ public class FillInput {
         hatalyossagKezdete.sendKeys(Keys.ENTER);
     }
 
-    public static void targyevbenIndul(boolean x) {
-        if (x) {
+    public static void targyevbenIndul() {
             driver.findElement(By.xpath("//p-checkbox[@id='filter_targyevbenIndul']/div/div[2]")).click();
-        }
     }
 }
