@@ -17,11 +17,11 @@ public class FillInput {
 
     public static void kompetenciak(int x) {
         WebElement komp = driver.findElement(By.xpath("//div[@aria-controls='collapseOne']"));
-        boolean rollMenu = Boolean.parseBoolean(komp.getAttribute("aria-expanded"));
-        if (rollMenu == false) {
+        boolean isRollMenuVisible = Boolean.parseBoolean(komp.getAttribute("aria-expanded"));
+        if (!isRollMenuVisible) {
             komp.click();
+            sleep(1000);
         }
-        sleep(1000);
         switch (x) {
             case 1:
                 driver.findElement(By.xpath("//div[@id='collapseOne']/div/div[1]/span/input")).click();

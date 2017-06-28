@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.lang.*;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static com.apertus.helper.ThreadSleepSupport.sleep;
 
@@ -202,8 +201,67 @@ public class InputTest {
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PN-0320-1411-MV')]")).isDisplayed());
     }
 
+    @Test
+    public void EighthTest() {
+
+        //SETUP INPUTS
+        FillInput.programNev("A Heves megyei kormányablakokban dolgozó ügyintézők csoportos mentorálása.");
+        FillInput.programGazda("HEVES MEGYEI KORMÁNYHIVATAL");
+        FillInput.oraszam("17");
+        FillInput.koltseg("nem");
+        FillInput.programCsoport("bel");
+
+        //LAUNCH SUBMIT
+        FillInput.kereses();
+
+        //EXPECTED RESULTS
+        sleep(1000);
+        assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-1739-1501-BS')]")).isDisplayed());
+    }
+
+    @Test
+    public void NinthTest() {
+
+        //SETUP INPUTS
+        FillInput.programNev("+!%/=()-.,_?:");
+        FillInput.programGazda("+!%/=()-.,_?:");
+        FillInput.programNyilvantartasiSzam("+!%/=()-.,_?:");
+        FillInput.oraszam("+!%/=()-.,_?:");
+        FillInput.tanulmanyiPontszam("+!%/=()-.,_?:");
+        FillInput.koltseg("+!%/=()-.,_?:");
+        FillInput.programCsoport("+!%/=()-.,_?:");
+        FillInput.szervezetreKorlatozott("+!%/=()-.,_?:");
+        FillInput.ELearning();
+        FillInput.jelenleti();
+        FillInput.blended();
+        FillInput.telepules("+!%/=()-.,_?:");
+        FillInput.hatalyossagKezdete("+!%/=()-.,_?:");
+        FillInput.targyevbenIndul();
+
+        //LAUNCH SUBMIT
+        FillInput.kereses();
+
+        //EXPECTED RESULTS
+        sleep(1000);
+        assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-info']")).isDisplayed());
+    }
+
+    @Test
+    public void TenthTest() {
+
+        //SETUP INPUTS
+        FillInput.programNev("\" or \"\"=\"");   //injection
+
+        //LAUNCH SUBMIT
+        FillInput.kereses();
+
+        //EXPECTED RESULTS
+        sleep(1000);
+        assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-info']")).isDisplayed());
+    }
+
     @AfterClass
     public static void tearDownOnce() {
-        //driver.close();
+        driver.close();
     }
 }

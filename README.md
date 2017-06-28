@@ -1,6 +1,9 @@
 # Probono
 
+First of all you should align the wedriver in the @BeforeClass section --> "d:\\Repositories\\chromedriver.exe"
+
 Each test annotation is a different combination of inputs. You can easily create such a test by using the FillInput funcions:
+
  - kompetenciak: range of parameter is from 1 to 33. Each number means a different type of competence, see below:
 	1	Az alkotmányjog és az államtan közszolgálati kompetenciái
 	2	A kormányzás hatékonyságának (feltételei, modelljei) közszolgálati kompetenciái
