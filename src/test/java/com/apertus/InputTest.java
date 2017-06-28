@@ -96,7 +96,7 @@ public class InputTest {
     }
 
     @Test
-    public void fourthTest() {
+    public void FourthTest() {
 
         //SETUP INPUTS
         FillInput.kompetenciak(14);
@@ -116,7 +116,7 @@ public class InputTest {
     }
 
     @Test
-    public void fifthTest() {
+    public void FifthTest() {
 
         //SETUP INPUTS
         FillInput.programNev("Anyakönyvi szakvizsga felkészítő tanfolyam");
@@ -137,6 +137,69 @@ public class InputTest {
         //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-2283-1703-BS')]")).isDisplayed());
+    }
+
+    @Test
+    public void SixthTest() {
+
+        //SETUP INPUTS
+        FillInput.kompetenciak(34);
+        FillInput.kompetenciak(35);
+        FillInput.programNev("123456789");
+        FillInput.programGazda("22");
+        FillInput.programNyilvantartasiSzam("asdfghjkl");
+        FillInput.oraszam("50");
+        FillInput.tanulmanyiPontszam("150");
+        FillInput.koltseg("oi");
+        FillInput.programCsoport("ert");
+        FillInput.szervezetreKorlatozott("yes");
+        FillInput.ELearning();
+        FillInput.jelenleti();
+        FillInput.blended();
+        FillInput.telepules("qwe");
+        FillInput.hatalyossagKezdete("2017.13.27");
+        FillInput.targyevbenIndul();
+
+        //LAUNCH SUBMIT
+        FillInput.kereses();
+
+        //EXPECTED RESULTS
+        sleep(1000);
+        assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-info']")).isDisplayed());
+    }
+
+    @Test
+    public void SeventhTest() {
+
+        //SETUP INPUTS
+        FillInput.kompetenciak(1);
+        FillInput.kompetenciak(2);
+        FillInput.kompetenciak(3);
+        FillInput.kompetenciak(4);
+        FillInput.kompetenciak(5);
+        FillInput.kompetenciak(6);
+        FillInput.kompetenciak(7);
+        FillInput.kompetenciak(8);
+        FillInput.kompetenciak(9);
+        FillInput.kompetenciak(10);
+        FillInput.oraszam("17");
+        FillInput.tanulmanyiPontszam("33");
+        FillInput.koltseg("norm");
+        FillInput.programCsoport("k");
+        FillInput.szervezetreKorlatozott("nem");
+        FillInput.ELearning();
+        FillInput.jelenleti();
+        FillInput.blended();
+        FillInput.telepules("buda");
+        FillInput.hatalyossagKezdete("2015.01.01");
+        FillInput.targyevbenIndul();
+
+        //LAUNCH SUBMIT
+        FillInput.kereses();
+
+        //EXPECTED RESULTS
+        sleep(1000);
+        assertTrue(driver.findElement(By.xpath("//td[contains(.,'PN-0320-1411-MV')]")).isDisplayed());
     }
 
     @AfterClass
