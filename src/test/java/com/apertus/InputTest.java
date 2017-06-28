@@ -27,19 +27,22 @@ public class InputTest {
     public void SetUpURL() {
         fillinput = new FillInput(driver);
         driver.get("https://probono.uni-nke.hu/apps/programkereso-uj/#/programok");
+        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
     }
 
     @Test
     public void FirstTest() {
 
-        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
-
+        //SETUP INPUTS
         FillInput.kompetenciak(5);
+        FillInput.kompetenciak(10);
+        FillInput.kompetenciak(2);
+        FillInput.kompetenciak(32);
         FillInput.programNev("\"A helyi önkormányzatok törvényességi felügyeletével összefüggő írásbeli kapcsolattartás\" rendszerének gyakorlati bemutatása");
         FillInput.programGazda("NÓGRÁD MEGYEI KORMÁNYHIVATAL");
         FillInput.programNyilvantartasiSzam("PM-0733-1404-BS");
         FillInput.oraszam("1");
-        FillInput.tanulmenyiPontszam("9");
+        FillInput.tanulmanyiPontszam("9");
         FillInput.koltseg("terit");
         FillInput.programCsoport("k");
         FillInput.szervezetreKorlatozott("igen");
@@ -50,8 +53,10 @@ public class InputTest {
         FillInput.hatalyossagKezdete("2017.06.27");
         FillInput.targyevbenIndul();
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //LAUNCH SUBMIT
+        FillInput.kereses();
 
+        //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-info']")).isDisplayed());
     }
@@ -59,14 +64,15 @@ public class InputTest {
     @Test
     public void SecondTest() {
 
-        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
-
+        //SETUP INPUTS
         FillInput.programNev("\"A helyi önkormányzatok törvényességi felügyeletével összefüggő írásbeli kapcsolattartás\" rendszerének gyakorlati bemutatása");
         FillInput.programGazda("NÓGRÁD MEGYEI KORMÁNYHIVATAL");
         FillInput.programNyilvantartasiSzam("PM-0733-1404-BS");
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //LAUNCH SUBMIT
+        FillInput.kereses();
 
+        //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-0733-1404-BS')]")).isDisplayed());
     }
@@ -74,15 +80,16 @@ public class InputTest {
     @Test
     public void ThirdTest() {
 
-        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
-
+        //SETUP INPUTS
         FillInput.programGazda("EMBERI ERŐFORRÁSOK MINISZTÉRIUMA");
         FillInput.koltseg("nem");
         FillInput.programCsoport("bel");
         FillInput.ELearning();
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //LAUNCH SUBMIT
+        FillInput.kereses();
 
+        //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-1788-1501-BS')]")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-1789-1501-BS')]")).isDisplayed());
@@ -91,8 +98,7 @@ public class InputTest {
     @Test
     public void fourthTest() {
 
-        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
-
+        //SETUP INPUTS
         FillInput.kompetenciak(14);
         FillInput.programGazda("NEMZETI KÖZSZOLGÁLATI EGYETEM");
         FillInput.programNyilvantartasiSzam("PN-0191-1401-MK");
@@ -101,8 +107,10 @@ public class InputTest {
         FillInput.ELearning();
         FillInput.targyevbenIndul();
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //LAUNCH SUBMIT
+        FillInput.kereses();
 
+        //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PN-0191-1401-MK')]")).isDisplayed());
     }
@@ -110,13 +118,12 @@ public class InputTest {
     @Test
     public void fifthTest() {
 
-        driver.findElement(By.xpath("//span[@aria-controls='collapseProgramKereso']")).click();
-
+        //SETUP INPUTS
         FillInput.programNev("Anyakönyvi szakvizsga felkészítő tanfolyam");
         FillInput.programGazda("CSONGRÁD MEGYEI KORMÁNYHIVATAL");
         FillInput.programNyilvantartasiSzam("PM-2283-1703-BS");
         FillInput.oraszam("65");
-        FillInput.tanulmenyiPontszam("33");
+        FillInput.tanulmanyiPontszam("33");
         FillInput.koltseg("nem");
         FillInput.programCsoport("bel");
         FillInput.szervezetreKorlatozott("nem");
@@ -124,8 +131,10 @@ public class InputTest {
         FillInput.telepules("szeg");
         FillInput.hatalyossagKezdete("2016.06.27");
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //LAUNCH SUBMIT
+        FillInput.kereses();
 
+        //EXPECTED RESULTS
         sleep(1000);
         assertTrue(driver.findElement(By.xpath("//td[contains(.,'PM-2283-1703-BS')]")).isDisplayed());
     }

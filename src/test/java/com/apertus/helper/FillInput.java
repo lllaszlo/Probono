@@ -16,7 +16,11 @@ public class FillInput {
     }
 
     public static void kompetenciak(int x) {
-        driver.findElement(By.xpath("//div[@aria-controls='collapseOne']")).click();
+        WebElement komp = driver.findElement(By.xpath("//div[@aria-controls='collapseOne']"));
+        boolean rollMenu = Boolean.parseBoolean(komp.getAttribute("aria-expanded"));
+        if (rollMenu == false) {
+            komp.click();
+        }
         sleep(1000);
         switch (x) {
             case 1:
@@ -159,13 +163,13 @@ public class FillInput {
         //65 = 65- óra
     }
 
-    public static void tanulmenyiPontszam(String x) {
+    public static void tanulmanyiPontszam(String x) {
         driver.findElement(By.xpath("//span[@id='select2-filter_selectedKredit-container']")).click();
-        WebElement tanulmenyiPontszamInput = driver.findElement(By.xpath("//input[@autocapitalize='off']"));
-        tanulmenyiPontszamInput.click();
-        tanulmenyiPontszamInput.clear();
-        tanulmenyiPontszamInput.sendKeys(x);
-        tanulmenyiPontszamInput.sendKeys(Keys.ENTER);
+        WebElement tanulmanyiPontszamInput = driver.findElement(By.xpath("//input[@autocapitalize='off']"));
+        tanulmanyiPontszamInput.click();
+        tanulmanyiPontszamInput.clear();
+        tanulmanyiPontszamInput.sendKeys(x);
+        tanulmanyiPontszamInput.sendKeys(Keys.ENTER);
         //8 = 1-8 tanulmányi pont
         //9 = 9-16 tanulmányi pont
         //17 = 17-32 tanulmányi pont
@@ -245,5 +249,9 @@ public class FillInput {
 
     public static void targyevbenIndul() {
             driver.findElement(By.xpath("//p-checkbox[@id='filter_targyevbenIndul']/div/div[2]")).click();
+    }
+
+    public static void kereses() {
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 }
